@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>==</title>
+	<script src="raphael-min.js"></script>
+	<script>
+	  window.onload = function() {
+		
+		var p = Raphael("paper"); 
+		p.rect(0, 0, 400, 400); 
+		
+		p.path( "M 100 100 R 200 200 250 300 300 100" )
+		.animate({
+			path : "M 100 100 R 200 200 250 300 300 100z"
+		}, 2000, "elastic"); 
+		
+		p.path("M 100 200 200 200 300 200z")
+		.animate({
+			path : "M 100 200 200 350 300 200z"
+		}, 1000, "elastic");
+		
+		//button
+		
+		p.setStart(); 
+		
+		p.circle(50, 50, 20)
+		.attr({
+			fill : "45-#000-#f00"
+		});
+		p.text(50, 50, "button")
+		  .attr({
+			fill : "white"
+		});
+		
+		var btn = p.setFinish();
+		
+		//end button
+		  
+	};
+		
+
+	</script>
+	<style>
+	  #paper {
+		width : 400px;
+		height : 400px; 
+		margin: 0 auto; 
+	  }
+	</style>
+</head>
+
+<body>
+	<div id="paper"></div>
+
+</body>
+
+</html>

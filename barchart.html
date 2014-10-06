@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>gRaphaël Dynamic Bar Chart</title>
+        <link rel="stylesheet" href="demo.css" media="screen">
+        <script src="raphael-min.js"></script>
+        <script src="g.raphael-min.js"></script>
+        <script src="g.bar-min.js"></script>
+        <script>
+            window.onload = function () {
+                var r = Raphael("holder"),
+                    fin = function () {
+                        this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
+                    },
+                    fout = function () {
+                        this.flag.animate({opacity: 0}, 300, function () {this.remove();});
+                    },
+                    fin2 = function () {
+                        var y = [], res = [];
+                        for (var i = this.bars.length; i--;) {
+                            y.push(this.bars[i].y);
+                            res.push(this.bars[i].value || "0");
+                        }
+                        this.flag = r.popup(this.bars[0].x, Math.min.apply(Math, y), res.join(", ")).insertBefore(this);
+                    },
+                    fout2 = function () {
+                        this.flag.animate({opacity: 0}, 300, function () {this.remove();});
+                    },
+                    txtattr = { font: "12px sans-serif" };
+                
+                
+                 r.text(280, 90, "Multiline Series Stacked Chart").attr(txtattr)
+                
+
+			var c = r.barchart(130, 100, 400, 300, [[55, 20, 13, 32, 5, 1, 2, 10], [20, 2, 1, 5, 32, 13, 20, 55], [17, 5, 0, 3, 10, 3, 40, 25], [45, 22, 33, 12, 4, 16, 23, 35]], {stacked: true}); 
+			            };
+        </script>
+		<style>
+		body {
+		    background: #999 url(http://raphaeljs.com/images/bgbg.png);
+		    font: 100.01% "Fontin Sans", Fontin-Sans, "Myriad Pro", "Lucida Grande", "Lucida Sans Unicode", Lucida, Verdana, Helvetica, sans-serif;
+		    color: #000;
+		    margin: 10px 0 0 0;
+		    padding: 0;
+		    text-align: center;
+		}
+		#holder {
+		    -moz-border-radius: 10px;
+		    -webkit-border-radius: 10px;
+		    -webkit-box-shadow: 0 1px 3px #666;
+		    background: #ddd url(http://raphaeljs.com/images/bg.png);
+		    margin: 0 auto;
+		    width: 640px;
+		    height: 480px;
+		}
+		p {
+		    text-align: left;
+		    margin: .5em 2em;
+		}
+		
+		</style>
+    </head>
+    <body>
+        <div id="holder"></div>
+        
+    </body>
+</html>

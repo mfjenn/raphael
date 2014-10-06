@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>==</title>
+	<script src="raphael-min.js"></script>
+	<script>
+	window.onload = function() {
+		
+		var p = Raphael(0, 0, 400, 400); 
+		p.rect(0, 0, 400, 400); 
+		
+		var redRect = p.rect(20, 20, 50, 50)
+		  .attr({
+			fill : "red", 
+			stroke : "none", 
+			cursor : "pointer"
+		}).click(function() {
+			this.attr({ fill : "blue" });
+		}).hover(function(){
+			this.attr({ fill : "green" });
+		}, function(){
+			this.attr({ fill : "red" }); 
+		});
+		
+		p.circle(100, 100, 30)
+		.attr({
+			"stroke-width" : 5, 
+			fill : "45-#f00-#000", 
+			cursor : "pointer"
+		}).animate({
+			cx : 300, 
+			transform : "s2"
+		}, 1000, "elastic")
+		.click (function(){
+			redRect.animate({ y : 200 });
+		});
+		
+		p.rect(200, 250, 50, 50)
+		.attr({
+			fill : "orange"
+		}).animate({ 
+			transform : "r180", 
+			fill : "blue"
+		}, 1000);
+		
+		var text = p.text(70, 250, "Hola!")
+		.attr({
+			"font-family" : "sans-serif", 
+			"font-size" : 20
+		}).animate({
+			y : 100
+		}, 200, "elastic");
+	};
+		
+
+	</script>
+	<style>
+	</style>
+</head>
+
+<body>
+	
+
+</body>
+
+</html>
